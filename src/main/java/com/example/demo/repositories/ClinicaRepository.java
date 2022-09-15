@@ -1,11 +1,22 @@
 package com.example.demo.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entities.Clinica;
 
 @Repository
-public interface ClinicaRepository extends JpaRepository<Clinica, Long> {
+public class ClinicaRepository {
+
+	public Clinica save(Clinica nuevaClinica) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Clinica> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

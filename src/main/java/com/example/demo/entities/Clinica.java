@@ -1,16 +1,8 @@
 package com.example.demo.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
 public class Clinica {
 	
-	@Id
-	@GeneratedValue
 	private long clinicaId;
-
 	private String nombre;
 	private String direccion;
 	private String telefono;
