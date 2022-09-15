@@ -32,17 +32,17 @@ public class Controller {
 	
 	@PostMapping("/add/paciente")
     public Paciente cargarPaciente(@RequestBody Paciente paciente) {
-        return null;
+        return service.guardarPaciente(paciente);
     }
 	
 	@PostMapping("/add/medico")
     public Medico cargarMedico(@RequestBody Medico medico) {
-        return null;
+        return service.guardarMedico(medico);
     }
 	
 	@PostMapping("/add/clinica")
     public Clinica cargarClinica(@RequestBody Clinica clinica) {
-        return null;
+        return service.guardarClinica(clinica);
     }
 
 	@GetMapping("/get/pacientesPorMedicoYFecha/{medicoId}/{fecha}")
