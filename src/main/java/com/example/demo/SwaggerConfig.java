@@ -30,7 +30,7 @@ public class SwaggerConfig {
 	private ApiInfo getApiInfo() {
 		return new ApiInfo(
 				"Api Medicos",
-				"Api para gestionar clinicas",
+				"Controlador para poder gestionar y procesar datos de Medicos, Pacientes y Clinicas.",
 				"1.0",
 				"http://terminosycondiciones",
 				new Contact("Alkemy", "", ""),
