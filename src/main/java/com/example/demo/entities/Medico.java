@@ -6,8 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Medico {
@@ -28,14 +29,18 @@ public class Medico {
 	private DiaSemanaEnum diaSemanaDisponible;
 	private boolean trabajaFinesSemanasYFeriados;
 	
+	@ManyToMany
+    @JoinTable(name = "medicos_pacientes",
+        joinColumns = { @JoinColumn(name = "id_medico") },
+        inverseJoinColumns = { @JoinColumn(name = "id_paciente") })
+	private List<Paciente> pacientes;
+	
 	public long getMedicoId() {
 		return medicoId;
 	}
 	public void setMedicoId(long medicoId) {
 		this.medicoId = medicoId;
 	}
-	@OneToMany
-	private List<Paciente> pacientes;
 	
 	public String getNombre() {
 		return nombre;
