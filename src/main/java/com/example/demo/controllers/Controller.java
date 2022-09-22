@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,7 +53,7 @@ public class Controller {
 
 	@ApiOperation(value = "Endpoint para poder una lista de pacientes filtrando por medico y por fecha de turno con el medico", response = Paciente.class, tags = "Pacientes por medico y fecha")
 	@GetMapping("/get/pacientesPorMedicoYFecha/{medicoId}/{fecha}")
-	public List<Paciente> pacientesPorMedicoYFecha(@PathVariable("medicoId") long medicoId, @PathVariable("fecha") Date fecha) {
+	public List<Paciente> pacientesPorMedicoYFecha(@PathVariable("medicoId") long medicoId, @PathVariable("fecha") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha) {
 		return service.getPacientesPorMedicoYFecha(medicoId, fecha);
 	}
 	
@@ -76,7 +77,7 @@ public class Controller {
 	
 	@ApiOperation(value = "Endpoint para poder obtener la cantidad de pacientes que tiene una clinica para una fecha en particular", response = Paciente.class, tags = "Cantidad de pacientes de una clinica por fecha")
 	@GetMapping("/get/cantidadPacientesClinicaFecha/{fecha}")
-	public int cantidadPacientesClinicaFecha(@PathVariable("fecha") Date fecha) {
+	public int cantidadPacientesClinicaFecha(@PathVariable("fecha") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha) {
 		return service.getCantidadPacientesClinicaFecha(fecha);
 	}
 
@@ -99,8 +100,8 @@ public class Controller {
 	}
 	
 	@ApiOperation(value = "Endpoint para poder obtener una lista de pacientes en un rango de fechas", response = Paciente.class, tags = "Pacientes por rango de fechas")
-	@GetMapping("/get/pacientesEntreFechas")
-	public List<Paciente> pacientesEntreFechas(@PathVariable("fechaDesde") Date fechaDesde, @PathVariable("fechaHasta") Date fechaHasta, @PathVariable("medicoId") long medicoId) {
+	@GetMapping("/get/pacientesEntreFechas/{fechaDesde}/{fechaHasta}/{medicoId}")
+	public List<Paciente> pacientesEntreFechas(@PathVariable("fechaDesde") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaDesde, @PathVariable("fechaHasta") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaHasta, @PathVariable("medicoId") long medicoId) {
 		return service.getPacientesEntreFechas(fechaDesde, fechaHasta, medicoId);
 	}
 	

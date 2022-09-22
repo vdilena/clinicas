@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Paciente {
 
@@ -25,6 +27,7 @@ public class Paciente {
 	private Date fechaTurnoConMedico;
 
 	@ManyToMany(mappedBy="pacientes")
+	@JsonIgnore
 	private List<Medico> medicos;
 
 	public long getPacienteId() {
