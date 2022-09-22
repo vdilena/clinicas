@@ -15,6 +15,16 @@ public class Clinica {
 	private String direccion;
 	private String telefono;
 	
+	public Clinica() {}
+	
+	public Clinica(long clinicaId, String nombre, String direccion, String telefono) {
+		
+		this.clinicaId = clinicaId;
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.telefono = telefono;
+	}
+	
 	public long getClinicaId() {
 		return clinicaId;
 	}

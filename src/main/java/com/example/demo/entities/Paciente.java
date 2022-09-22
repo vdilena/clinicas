@@ -25,10 +25,27 @@ public class Paciente {
 	private String dni;
 	private String telefono;
 	private Date fechaTurnoConMedico;
-
+	
 	@ManyToMany(mappedBy="pacientes")
 	@JsonIgnore
 	private List<Medico> medicos;
+	
+	public Paciente() {}
+
+	public Paciente(long pacienteId, String nombre, String apellido, String email, int edad, Date fechaNacimiento,
+			String dni, String telefono, Date fechaTurnoConMedico, List<Medico> medicos) {
+
+		this.pacienteId = pacienteId;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.edad = edad;
+		this.fechaNacimiento = fechaNacimiento;
+		this.dni = dni;
+		this.telefono = telefono;
+		this.fechaTurnoConMedico = fechaTurnoConMedico;
+		this.medicos = medicos;
+	}
 
 	public long getPacienteId() {
 		return pacienteId;	

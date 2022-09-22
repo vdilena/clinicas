@@ -35,6 +35,24 @@ public class Medico {
         inverseJoinColumns = { @JoinColumn(name = "id_paciente") })
 	private List<Paciente> pacientes;
 	
+	public Medico() {}
+	
+	public Medico(long medicoId, String nombre, String apellido, String email, String telefono,
+			Clinica clinicaDondeTrabaja, DiaSemanaEnum diaSemanaDisponible, boolean trabajaFinesSemanasYFeriados, List<Paciente> pacientes) {
+
+		this.medicoId = medicoId;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.telefono = telefono;
+		this.clinicaDondeTrabaja = clinicaDondeTrabaja;
+		this.diaSemanaDisponible = diaSemanaDisponible;
+		this.trabajaFinesSemanasYFeriados = trabajaFinesSemanasYFeriados;
+		this.pacientes = pacientes;
+	}
+
+
+
 	public long getMedicoId() {
 		return medicoId;
 	}
