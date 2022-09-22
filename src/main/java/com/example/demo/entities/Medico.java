@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -33,7 +34,7 @@ public class Medico {
     @JoinTable(name = "medicos_pacientes",
         joinColumns = { @JoinColumn(name = "id_medico") },
         inverseJoinColumns = { @JoinColumn(name = "id_paciente") })
-	private List<Paciente> pacientes;
+	private List<Paciente> pacientes = new ArrayList<>();
 	
 	public Medico() {}
 	

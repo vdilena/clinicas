@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class Paciente {
 	
 	@ManyToMany(mappedBy="pacientes")
 	@JsonIgnore
-	private List<Medico> medicos;
+	private List<Medico> medicos = new ArrayList<>();
 	
 	public Paciente() {}
 
