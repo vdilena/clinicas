@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -76,6 +77,21 @@ public class ClinicaServiceImpl implements ClinicaService {
 	 */
 	public List<Clinica> obtenerClinicas() {
 		return clinicaRepository.findAll();
+	}
+
+	@Override
+	public Clinica guardar(Clinica nuevaClinica) {
+		return clinicaRepository.save(nuevaClinica);
+	}
+
+	@Override
+	public Optional<Clinica> buscarPorId(Long clinicaId) {
+		return clinicaRepository.findById(clinicaId);
+	}
+
+	@Override
+	public void quitar(Long clinicaId) {
+		clinicaRepository.deleteById(clinicaId);
 	}
 
 }

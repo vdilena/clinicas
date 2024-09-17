@@ -5,9 +5,11 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,9 +38,37 @@ public class ClinicaController {
 		return "Funciona el controlador";
 	}
 	
+	/**
+	 * Endpoints para clinicas
+	 */
 	@GetMapping("/clinica")
 	public List<Clinica> todasLasClinicas() {
 		return clinicaService.obtenerClinicas();
+	}
+	
+	@PostMapping("/clinica")
+	Clinica nuevaClinica(@RequestBody Clinica nuevaClinica) {
+		return clinicaService.guardar(nuevaClinica);
+	}
+	
+	@PutMapping("/clinica/{clinicaId}")
+	Clinica actualizarClinica(@RequestBody Clinica clinicaActualizable, @PathVariable Long clinicaId) {
+		
+		return clinicaService.buscarPorId(clinicaId)
+			      .map(clinica -> {
+			    	clinica.setNombre(clinicaActualizable.getNombre());
+			    	clinica.setDireccion(clinicaActualizable.getDireccion());
+			    	clinica.setTelefono(clinicaActualizable.getTelefono());
+			        return clinicaService.guardar(clinica);
+			      })
+			      .orElseGet(() -> {
+			        return clinicaService.guardar(clinicaActualizable);
+			      });
+	}
+	
+	@DeleteMapping("/clinica/{clinicaId}")
+	void quitarClinica(@PathVariable Long clinicaId) {
+		clinicaService.quitar(clinicaId);
 	}
 	
 	@GetMapping("/medico")

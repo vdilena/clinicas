@@ -4,13 +4,14 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Paciente {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long pacienteId;
 	private String nombre;
 	private String apellido;
@@ -19,7 +20,6 @@ public class Paciente {
 	private Date fechaNacimiento;
 	private String dni;
 	private String telefono;
-	private Date fechaTurnoConMedico;
 	
 	public long getPacienteId() {
 		return pacienteId;
@@ -69,12 +69,4 @@ public class Paciente {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public Date getFechaTurnoConMedico() {
-		return fechaTurnoConMedico;
-	}
-	public void setFechaTurnoConMedico(Date fechaTurnoConMedico) {
-		this.fechaTurnoConMedico = fechaTurnoConMedico;
-	}
-	
-
 }
