@@ -2,15 +2,26 @@ package com.example.demo.entities;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+@Entity
 public class Medico {
 	
+	@Id
+	@GeneratedValue
 	private long medicoId;
 	private String nombre;
 	private String apellido;
 	private String email;
 	private String telefono;
+	
+	@ManyToOne
+	@JoinColumn(name="clinica_id", nullable=false)
 	private Clinica clinicaDondeTrabaja;
 	private DiaSemanaEnum diaSemanaDisponible;
 	private boolean trabajaFinesSemanasYFeriados;

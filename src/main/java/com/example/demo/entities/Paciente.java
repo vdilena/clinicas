@@ -2,8 +2,15 @@ package com.example.demo.entities;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Paciente {
 	
+	@Id
+	@GeneratedValue
 	private long pacienteId;
 	private String nombre;
 	private String apellido;

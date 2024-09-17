@@ -1,11 +1,25 @@
 package com.example.demo.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Clinica {
 	
+	@Id
+	@GeneratedValue
 	private long clinicaId;
 	private String nombre;
 	private String direccion;
 	private String telefono;
+	
+	@OneToMany(mappedBy="clinicaDondeTrabaja")
+	private List<Medico> medicos = new ArrayList<>();
 	
 	public long getClinicaId() {
 		return clinicaId;
@@ -30,5 +44,11 @@ public class Clinica {
 	}
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+	public List<Medico> getMedicos() {
+		return medicos;
+	}
+	public void setMedicos(List<Medico> medicos) {
+		this.medicos = medicos;
 	}
 }
