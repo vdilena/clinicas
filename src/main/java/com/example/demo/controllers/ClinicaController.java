@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,16 +42,26 @@ public class ClinicaController {
 	/**
 	 * Endpoints para clinicas
 	 */
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/clinica")
 	public List<Clinica> todasLasClinicas() {
 		return clinicaService.obtenerClinicas();
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("/clinica/{clinicaId}")
+	public Clinica clinicaPorId(@PathVariable Long clinicaId) {
+		return clinicaService.buscarPorId(clinicaId).orElseGet(null);
+	}
+	
+	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/clinica")
 	Clinica nuevaClinica(@RequestBody Clinica nuevaClinica) {
 		return clinicaService.guardar(nuevaClinica);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PutMapping("/clinica/{clinicaId}")
 	Clinica actualizarClinica(@RequestBody Clinica clinicaActualizable, @PathVariable Long clinicaId) {
 		
@@ -66,6 +77,7 @@ public class ClinicaController {
 			      });
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@DeleteMapping("/clinica/{clinicaId}")
 	void quitarClinica(@PathVariable Long clinicaId) {
 		clinicaService.quitar(clinicaId);
